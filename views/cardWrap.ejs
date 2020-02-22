@@ -1,0 +1,100 @@
+<% for (var i = 0; i < articles.length; i++) {%>
+<div class="cardWrap W_CardBack">
+    <div class="feed-detail">
+        <div class="detail-screen W-fr">
+            <div class="screen-box W-pa">
+                <a>
+                    <i class="glyphicon glyphicon-chevron-down ficon"></i>
+                </a>
+            </div>
+        </div>
+        <div class="detail-face W-fl W-pr">
+            <a class="face-radius" title="rounder" href="#">
+                <image title="rounder" src="<%= articles[i].favicon%>"></image>
+            </a>
+        </div>
+        <div class="detail-info">
+            <div class="info-name W-txt1 W-f14 "><%=articles[i].author %></div>
+            <div class="info-txt2 W-txt2"><%=articles[i].releaseTime %></div>
+            <div class="info-text W-f14"><%=articles[i].content %></div>
+            <div class="info-imageView" style="display:none"></div>
+            <% if ((articles[i].multiMedia.length > 0)&&(articles[i].multiMedia[0].indexOf('.png')>-1)) { %>
+            <div class="info-media clear">
+                <div class="media-box W-fl">
+                    <ul class="media-box-a" action-data="<%=articles[i].multiMedia.join(',')%>">
+                        <% for (var j = 0; j < articles[i].multiMedia.length; j++) {%>
+                        <li class="W-pr W-fl line2">
+                            <img  class="media-box-a-image bigcursor" action-data="<%=j%>" src="<%=articles[i].multiMedia[j]%>" style="width: 110px;height: 110px;left: 0px;top: 0px;">
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <% } else if(articles[i].multiMedia.length > 0) {%>
+            <div class="info-video clear">
+                <video id="M<%=articles[i].multiMedia[0].split('/')[3].split('.')[0]%>" action-data="<%=articles[i].multiMedia[0] %>"  class="video-js" >
+                   <img src="/uploads/small/202001101340435914064.png" onload="startVideo(this)">
+                </video>
+              
+                
+            </div>
+            <% } %>
+
+        </div>
+    </div>
+    <div class="feed-handle">
+        <div class="handle">
+            <ul class="row-line row-r4 line2">
+                <li>
+                    <a class="W-txt2" href="javascript:void(0);">
+                        <span class="pos">
+                            <span class="line line1">
+                                <span>
+                                    <em class="S-ficon glyphicon glyphicon-tag"></em>
+                                    <em>收藏</em>
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="W-txt2" href="javascript:void(0);">
+                        <span class="pos">
+                            <span class="line line1">
+                                <span>
+                                    <em class="S-ficon glyphicon glyphicon-share"></em>
+                                    <em>1</em>
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                        <a class="W-txt2" href="javascript:void(0);">
+                            <span class="pos">
+                                <span class="line line1">
+                                    <span>
+                                        <em class="S-ficon glyphicon glyphicon-edit"></em>
+                                        <em>评论</em>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                            <a class="W-txt2" href="javascript:void(0);">
+                                <span class="pos">
+                                    <span class="line line1">
+                                        <span>
+                                            <em class="S-ficon glyphicon glyphicon-thumbs-up"></em>
+                                            <em>赞</em>
+                                        </span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<% } %>

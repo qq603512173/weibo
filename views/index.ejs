@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>主页</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link href="/stylesheets/frame.css" rel="stylesheet">
+    <link href="/stylesheets/cardWrap.css" rel="stylesheet">
+    <link href="/css/video-js.min.css" rel="stylesheet">
+  </head> 
+  <body>
+      <div class="mainblod">
+        <div class="header">
+                <div class="header_title">
+                <img src="/images/logo.png" >
+                <div class="header_admin">
+                <%- include('user', {user:user}) %> 
+                </div>
+              </div>
+        </div>
+        <div class="content">
+            <%- include('publish', {}) %>
+          <!-- <% for (var i = 0; i < articles.length; i++) {%>
+          <div class="content_items clear">
+            <div class="content_items_left">
+              <img src="<%=articles[i].multiMedia[0] %>" height="200px" width="350px">
+            </div>
+            <div class="content_items_right">
+                <div class="right_text">
+                  <span>
+                    <%=articles[i].content %>
+                  </span>
+                </div>
+                <div class="right_user">
+                    <img src="<%= articles[i].favicon%>" style="width:20px;height:20px;border-radius:50%;margin-right:2px;"/>
+                    <%=articles[i].author %>
+                    &nbsp;
+                    <%=articles[i].releaseTime %>
+                </div>
+                <div class="right_comment">
+                    4162 转发
+                </div>
+            </div>
+          </div>
+          <% } %> -->
+          
+          <%- include('cardWrap', {articles:articles}); %>
+        </div>
+
+          <%- include('login',{}); %>
+        </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/video.min.js"></script>
+    <script src="/js/jquery.RotationChart.js"></script>
+    <script src="/javascripts/login.js"></script>
+  </body>
+</html>

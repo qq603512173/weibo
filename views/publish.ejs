@@ -1,0 +1,56 @@
+<div class="content_input">
+    <textarea class="content_textarea" id="content" style="float:left"></textarea>
+    <div class="kind">
+            <a class="kind-a" title="表情"><em class="glyphicon glyphicon-adjust kind-href href-biaoqing"></em>表情</a>
+            <a class="kind-a kind-a-position" title="图片" href="#"><em class="glyphicon glyphicon-picture kind-href href-picture"></em>图片
+                <div style="position: absolute; left: 0px; top: -25px; display: block; overflow: hidden; background-color: rgb(0, 0, 0); opacity: 0; width: 55px;height: 60px;"><input id="fileImgs" name="file" accept="image/*" type="file"  multiple="" onchange="readAsDataURL($(this))" style="cursor: pointer;height:100%;weight:100%"></div>
+            </a>
+            <a class="kind-a kind-a-position" title="视频"><em class="glyphicon glyphicon-facetime-video kind-href href-video"></em>视频
+                <div style="position: absolute; left: 0px; top: -25px; display: block; overflow: hidden; background-color: rgb(0, 0, 0); opacity: 0; width: 55px;height: 60px;"><input id="fileVideo" name="file" accept="video/*" type="file"  multiple="" onchange="readVideoAsData($(this))" style="cursor: pointer;height:100%;weight:100%"></div>
+            </a>
+            <div class="filesUpload" id="filesUpload">
+                    <div class="layer_message">
+                        <span>本地上传</span>
+                    </div>
+                    <div class="layer_close">
+                        <a href="javascript:void(0)" class="ficon_close">X</a>
+                    </div>
+                    <div class="newUpload" id="newUpload" >
+                        <font class="newUploadAdd" >+</font>
+                        <div style="cursor:pointer;position: absolute;left: 0px;top: -27px;display: block;overflow: hidden;background-color: rgb(0, 0, 0);opacity: 0;width: 100px;height: 110px;"><input id="fileImgs" name="file" accept="image/*" type="file"  multiple="" onchange="readAsDataURL($(this))" style="cursor: pointer;height:100%;weight:100%"></div>
+                    </div>
+                    <div class="W_layer_arrow">
+                        <span node-type="arrow" class="W_arrow_bor W_arrow_bor_t" style="left: 81px; right: auto;"><i class="S_line3"></i><em class="S_bg2_br"></em></span>
+                    </div>
+            </div>
+            <div class="videoUpload" id="videoUpload">
+                <div class="W-f14">
+                    <span>本地上传</span>
+                </div>
+                <div class="W-txt2">
+                    <span>请上传15GB一下的视频, 请勿上传色情、反动等违法视频</span>
+                </div>
+                <div class="video-progress">
+                    <div class="progress progress-body">
+                        <div class="progress-bar" id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                        </div>
+                    </div>
+                    <div class="progress-cancel"><a class="W-txt2">取消上传</a></div>
+                </div>
+                <div class="progress-program">
+                    已上传: <span id="uploaded">0</span>%
+                    &nbsp;&nbsp;&nbsp;
+                    <span id="uploadedNum">0</span>&nbsp;M&nbsp;/&nbsp;<span id="uploadAllSize">0</span>&nbsp;M
+                    &nbsp;&nbsp;&nbsp;
+
+                </div>
+                <div class="layer_close">
+                    <a href="javascript:void(0)" class="fvide_close">X</a>
+                </div>
+                <div class="W_layer_arrow">
+                    <span node-type="arrow" class="W_arrow_bor W_arrow_bor_t" style="left: 81px; right: auto;"><i class="S_line3"></i><em class="S_bg2_br"></em></span>
+                </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-default btn-right" id="publish">发布</button>
+  </div>

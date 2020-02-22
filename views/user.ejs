@@ -1,0 +1,12 @@
+<% if (!user) { %>
+    <ul class="header_admin_list">
+      <li ><a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">登录</a></li>
+      <li class="S_line1"></li>
+      <li><a href="/signup">注册</a></li>
+    </ul>
+    <% } else {%>
+    <ul class="header_admin_list" >
+      <li style="top:-15px;"><img src="<%= user.favicon%>" style="width:40px;height:40px;border-radius:50%;border:#d9d9d9 2px solid"/></li>
+      <li id='loginUsername'><%=user.name%></li>
+    </ul>
+    <% } %>

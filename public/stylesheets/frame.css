@@ -1,0 +1,154 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,img {
+	border: 0;
+}
+
+address,caption,cite,code,dfn,em,th,var,i {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+caption,th {
+	text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+q:before,q:after {
+	content: '';
+}
+
+a:focus {
+	outline-style: none;
+}
+
+abbr,acronym {
+	border: 0;
+	font-variant: normal;
+}
+
+sup {
+	vertical-align: text-top;
+}
+
+sub {
+	vertical-align: text-bottom;
+}
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	*font-size: 100%;
+}
+
+textarea {
+	resize: none
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+body {
+	font: 12px/1.3 Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+	overflow-x: hidden;
+	color: #333;
+	-webkit-font-smoothing: antialiased;
+}
+
+::selection {
+	background: #eb7350;
+	color: #fff;
+}
+
+:focus {
+	outline-color: #eb7350;
+}
+
+
+.male,.female {
+	width: 12px;
+	height: 14px;
+	vertical-align: -1px;
+	vertical-align: text-bottom\9;
+}
+
+.male {
+	background-position: 0 0;
+}
+
+.female {
+	background-position: 0 -25px;
+}
+
+.approve,.approve_co,.approve_dead {
+	width: 14px;
+	height: 14px;
+	margin-left: 2px;
+	vertical-align: -2px;
+	vertical-align: text-bottom\9;
+}
+.W_CardBack{
+	background-color: #fff;
+	box-shadow: 0 0 2px rgba(0,0,0,0.2);
+	border-radius: 2px;
+}
+.W-fr{
+	float: right;
+}
+.W-fl{
+	float: left;
+}
+.W-pa{
+	position: absolute;
+}
+.W-pr{
+	position: relative;
+}
+.W-txt1{
+	color: #333;
+	text-decoration: none;
+}
+.W-txt2{
+	color: #808080;
+    text-decoration: none;
+}
+.W-f14 {
+    font-size: 14px;
+}
+.row-r4 li{
+    width: 25%;
+}
+.W_bg1{
+	background-color: #f2f2f5;
+}
+
+.smallcursor{
+    cursor: url(/images/small.cur), auto;
+}
+.leftcursor {
+    cursor: url(/images/pic_prev.cur), auto;
+}
+.rightcursor {
+    cursor: url(/images/pic_next.cur), auto;
+}
+.bigcursor {
+    cursor: url(/images/big.cur), auto;
+}

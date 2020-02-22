@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
+  </head> 
+  <body class="s_body">
+    <div class="s_content clear">
+            <form>
+                    <div class="f_center item">
+                        <img id="pic" style="width:100px;height:100px;border-radius:50%;border:#d9d9d9 2px solid" src="/images/touxiang.jpg">
+                        <input id="upload" name="file" accept="image/*" type="file" style="display: none">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-user glyphicon-item "></span>
+                        <input type="text" id="username" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
+                    
+                    </div>
+                    <div  class="md-item f_center errorNotShow" id="usernameError" ><span class="f_error">用户名已存在!</span></div>
+                    
+                    <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-user glyphicon-item "></span>
+                            <input type="text" id="name" class="form-control" placeholder="昵称" aria-describedby="basic-addon1">
+                        </div>
+                        <div  class="md-item f_center errorNotShow" id="nameError" ><span class="f_error">昵称为空!</span></div>
+
+                    <div class="input-group">
+                          <span class="input-group-addon glyphicon glyphicon-lock glyphicon-item "></span>
+                          <input type="password" id="password" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+                    </div>
+                    <div  class="md-item f_center errorNotShow"><span class="f_error">密码格式错误!</span></div>
+                    <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-lock glyphicon-item "></span>
+                            <input type="password" id="auditPassword" class="form-control" placeholder="再次输入密码" aria-describedby="basic-addon1">
+                      </div>
+                      <div  class="md-item f_center errorNotShow" id="auditPasError"><span class="f_error">两次输入的密码需要一致</span></div>
+                  <div class="input-group md-item g_item">
+                  <button type="button" class="btn btn-default btn-item" id="signup">注册</button>
+                </div>
+                </form>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("#pic").click(function() {
+            $("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+            $("#upload").on("change", function() {
+                var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+                if (objUrl) {
+                    $("#pic").attr("src", objUrl); //将图片路径存入src中，显示出图片
+                }
+            });
+        });
+
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+
+          //上传头像到服务器
+        function upimg( userId ,callback) {
+            var pic = $('#upload')[0].files[0];
+            var file = new FormData();
+            file.append('image', pic);
+            file.append('id', userId)
+            $.ajax({
+                url: "/uploadImg",
+                type: "post",
+                data: file,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    console.log(data);
+                    callback()
+                   // var res = data;
+                   // $("#resimg").append("<img src='/" + res + "'>")
+                }
+            });
+        }
+        $('#signup').on('click',function(){
+            $.ajax({
+                url: '/user/signup',
+                type: 'post',
+                data: {username:$('#username').val(), password:$('#password').val(), name:$('#name').val()},
+                success: function(result){
+                    if (!result.status)
+                    {
+                        alert("注册成功!")
+                        upimg(result.message, function(){
+                            $(location).attr('href', '/');
+                        });
+                    }
+                },
+                error: function(error){
+                    alert(error)
+                    console.log(error)
+                }
+            })
+        })
+        /*
+        *验证两次密码是否一致
+        */
+        $('#auditPassword').on('input',function(){
+           if ($('#auditPassword').val() != $('#password').val())
+           {
+             $('#auditPassword').addClass('form-item')
+             $('#auditPasError').removeClass('errorNotShow')
+           }else{
+             $('#auditPassword').removeClass('form-item')
+             $('#auditPasError').addClass('errorNotShow')
+           }
+           ifCanSignup()
+        })
+        /*
+        *验证是否存在此用户
+        */
+       $('#username').on('change',function(){
+           $.ajax({
+               url: '/user/ifexist',
+               type: 'post',
+               data: {username: $('#username').val()},
+               success:function(result){
+                   if(!result.status){
+                       $('#usernameError').addClass('errorNotShow')
+                       $('#username').removeClass('form-item')
+                   }else{
+                       $('#usernameError').removeClass('errorNotShow')
+                       $('#username').addClass('form-item')
+                   }
+                 ifCanSignup()
+               }
+           })
+       })
+       /*
+       * 判断是否可以注册
+       */
+       function ifCanSignup(){
+           var flag = true;
+           if (($('#username').val() == "")||($('#usernameError').css('visibility') != 'hidden')) flag=false
+           if (($('#auditPassword').val() == "")||($('#auditPasError').css('visibility') != 'hidden')) flag=false
+           if ($('#password').val() == "") flag=false
+           if (($('#name').val() == "")||($('#nameError').css('visibility') != 'hidden'))  flag=false
+           if (flag){
+                $('#signup').removeAttr("disabled")
+           }else{
+                $('#signup').attr("disabled",'disabled')
+           }
+       }
+       function init(){
+        ifCanSignup()
+       }
+       init();
+    });
+    </script>
+  </body>
+</html>

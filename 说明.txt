@@ -1,0 +1,38 @@
+git 的操作
+git branch ：查看分支
+git checkout 分支 ：切换分支
+git add * :添加
+git commit -m "信息" :提交
+git merge 分支 :将分支的内容合并到当前分支
+git push origin master :将代码提交到github远程服务器
+
+user表,username
+var userSchema = new Schema({
+    //登录名
+    username:{type:String, index:{unique:true}},
+    //登录密码
+    password:{type:String},
+    //真实姓名
+    name:{type:String},
+    //头像
+    favicon:{type: String},
+    //QQ
+    qq:{type:String},
+    //email
+    email:{type:String},
+    //电话
+    tel:{type:String},
+    //年龄
+    age:{type:Number},
+    //注册时间
+    regTime:{type:Date,default: Date.now()}
+});
+
+20191226计划：
+    显示图片上传并设置名字为当前日期 完成
+    gm裁切图片  先安装 imagemagick  完成
+    上传头像压缩 并赋值数据库 完成
+    密码 md5 加密   完成
+
+    登录界面session保存 和 显示登录人和图片
+    创建文章功能开发分支 article

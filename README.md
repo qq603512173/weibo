@@ -1,2 +1,1 @@
 # weibo
-my nodejs weibo

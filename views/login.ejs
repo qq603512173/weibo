@@ -1,0 +1,44 @@
+<link href="/css/login.css" rel="stylesheet">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog model-body" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="exampleModalLabel">登录</h4>
+            </div>
+            <div class="modal-body model-Items">
+              <form>
+                  <div class="input-group">
+                      <span class="input-group-addon glyphicon glyphicon-user glyphicon-item "></span>
+                      <input type="text" id="username" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
+                  
+                  </div>
+                  <div  class="md-item f_center errorNotShow"><span class="f_error">用户名不存在!</span></div>
+
+                  <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-lock glyphicon-item "></span>
+                        <input type="password" id="password" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+                  </div>
+                  <div  class="md-item f_center errorNotShow"><span class="f_error">密码错误!</span></div>
+                  <div class="_opation">
+                      <label>
+                        <input type="checkbox" class="m_check" id="modelCheck"  text="123">
+                        <span class="_font">记住我</span>
+                      </label>
+                      <label class="_op_psw">
+                        <span class="_font">忘记密码</span>
+                      </label>
+                </div>
+                <div class="input-group md-item g_item">
+                <button type="button" class="btn btn-default btn-item" id="login">登录</button>
+              </div>
+              <div class="_opation">
+                <label>
+                  <span class="_font">老子没有用户~</span><a>注册</a><span class="_font">吧大爷!</span>
+                </label>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
